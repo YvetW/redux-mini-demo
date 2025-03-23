@@ -1,12 +1,7 @@
-# React + Vite
+# Redux Mini
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+一个简易版 Redux 实现，帮助理解 Redux 的核心原理。
 
-Currently, two official plugins are available:
+## 项目介绍
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+本项目是一个 Redux 迷你实现，旨在帮助学习 Redux 的状态管理机制，包括 `store`、`reducer`、`dispatch` 等核心概念。
