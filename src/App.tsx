@@ -1,44 +1,50 @@
 import {useState} from 'react';
+import {Store} from 'redux';
+import {Action, increment, decrement, add_message} from './redux/actions.ts';
 
-function App() {
-    const [count, setCount] = useState(0);
-    const [selectedValue, setSelectedValue] = useState(1);
-    const [messages, setMessages] = useState<string[]>([]);
+// 为 App 组件定义一个 Props 类型，这个类型包含 store
+interface AppProps {
+    store: Store<{
+        count: number;
+        messages: string[];
+    }, Action>;
+}
+
+function App({store}: AppProps) {
+    const [selectedValue, setSelectedValue] = useState<number>(1);
     const [message, setMessage] = useState<string>('');
 
-    function handleSelectedValue(event: React.ChangeEvent<HTMLSelectElement>) {
-        setSelectedValue(Number(event.target.value));
+    const count = store.getState().count;
+    const messages = store.getState().messages;
+
+    function handleIncrement() {
+        store.dispatch(increment(selectedValue));
     }
 
-    function increment() {
-        setCount(count + selectedValue);
-    }
-
-    function decrement() {
-        setCount(count - selectedValue);
+    function handleDecrement() {
+        store.dispatch(decrement(selectedValue));
     }
 
     // 奇数增加
-    function incrementIfOdd() {
-        if (selectedValue % 2 === 1) {
-            setCount(count + selectedValue);
+    function handleIncrementIfOdd() {
+        // setCount 是异步的，如果 Redux 状态更新了，count 可能不会立即反映出来，直接从 store.getState() 读取最新的 count
+        if (store.getState().count % 2 === 1) {
+            store.dispatch(increment(selectedValue));
         }
     }
 
     // 异步增加
-    function incrementIfAsync() {
+    function handleIncrementIfAsync() {
         setTimeout(() => {
-            setCount(count + selectedValue);
+            store.dispatch(increment(selectedValue));
         }, 1000);
     }
 
-    function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
-        setMessage(event.target.value);
-    }
-
     function handleAdd() {
-        setMessages([message, ...messages]);
-        setMessage('');
+        if (message.trim()) {
+            store.dispatch(add_message(message));
+            setMessage('');
+        }
     }
 
     return (
@@ -46,24 +52,30 @@ function App() {
             <div className="count">
                 click <span>{count}</span> times
             </div>
-            <select id="number" value={selectedValue} onChange={handleSelectedValue}>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
+            <select
+                id="number" value={selectedValue}
+                // <option> 的 value 默认是字符串类型（即使它是一个数字），这里强制转换为数字
+                onChange={event => setSelectedValue(Number(event.target.value))}
+            >
+                {[1, 2, 3, 4, 5].map((item) => (
+                    <option value={item} key={item}>{item}</option>
+                ))}
             </select>
-            <button onClick={increment}>+</button>
-            <button onClick={decrement}>-</button>
-            <button onClick={incrementIfOdd}>increment if odd</button>
-            <button onClick={incrementIfAsync}>increment async</button>
+            <button onClick={handleIncrement}>+</button>
+            <button onClick={handleDecrement}>-</button>
+            <button onClick={handleIncrementIfOdd}>increment if odd</button>
+            <button onClick={handleIncrementIfAsync}>increment async</button>
             <hr />
-            <input type="text" value={message} onChange={handleInput} />
+            <input
+                type="text"
+                value={message}
+                onChange={event => setMessage(event.target.value)}
+            />
             <button onClick={handleAdd}>add text</button>
             <ul>
                 {
-                    messages.map((message) => (
-                        <li>{message}</li>
+                    messages.map((msg, index) => (
+                        <li key={index}>{msg}</li>
                     ))
                 }
             </ul>
