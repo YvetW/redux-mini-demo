@@ -4,23 +4,25 @@
 - react v19
 - redux v5
 
+注：多个版本，运行前请先修改src名称。
+
 ## 项目介绍
 
 本项目是一个 redux 迷你实现，旨在帮助学习 redux 的状态管理机制，包括 `store`、`action`、`reducer`、`dispatch` 等核心概念。
 
----
 
 ## src-01-basic
 
 使用 react 函数组件和 ts，不使用redux实现基本功能
 
----
 
 ## src-02-redux 
-### **基础版 Redux 实现**
-**不使用 `react-redux`**，而是直接使用 Redux `createStore` API（已过时，但用于学习）。
+### 基础版 Redux
 
-**步骤**
+在react使用redux，实现基础的状态管理。
+本版本不使用 `react-redux` 或 `@reduxjs/toolkit`，而是直接使用 Redux 的原生 `createStore` API（已过时，但有助于理解 Redux 的核心概念）。
+
+### **步骤**
 
 1. **创建 Action Types (`action-types.ts`)**  
    - 在 Redux 中，所有的 action 都应有一个唯一的 type，定义 `type` 常量。
@@ -44,8 +46,15 @@
     - `createRoot()` 挂载 `App` 组件。
     - 通过 `store.subscribe()` 监听 `state` 变化，每次 `dispatch` 触发 `state` 变更时重新渲染 `App`。
     - React 18 及以上使用 createRoot() 进行渲染，注意避免重复 createRoot() 调用。
-   
----
+
+
+## src-03-redux-mini-lib
+
+### 自定义 redux 库
+自己定义一个简易的 redux 库
+1. src目录下创建 libs 库，里面创建 redux 目录，创建index.ts redux 模块，它是一个对象
+
+
 
 ## src-0?-redux-toolkit
 实现 redux
