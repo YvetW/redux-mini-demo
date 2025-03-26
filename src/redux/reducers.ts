@@ -1,11 +1,11 @@
-import {combineReducers} from 'redux';
+import {combineReducers} from '../libs/redux';
 import {ADD_MESSAGE, DECREMENT, INCREMENT} from './action-types.ts';
-import {Action} from './actions.ts';
+import {CountAction, MessageAction} from './actions.ts';
 
 // 管理count
 const initCount: number = 0;
 
-function count(state: number = initCount, action: Action): number {
+function count(state: number = initCount, action: CountAction): number {
     console.log('count', state, action);
     switch (action.type) {
         case INCREMENT:
@@ -20,7 +20,7 @@ function count(state: number = initCount, action: Action): number {
 // 管理messages
 const initMessages: string[] = [];
 
-function messages(state: string[] = initMessages, action: Action): string[] {
+function messages(state: string[] = initMessages, action: MessageAction): string[] {
     console.log('messages', state, action);
     switch (action.type) {
         case ADD_MESSAGE:

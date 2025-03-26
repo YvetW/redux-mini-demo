@@ -52,8 +52,9 @@
 
 ### 自定义 redux 库
 自己定义一个简易的 redux 库
-1. src目录下创建 libs 库，里面创建 redux 目录，创建index.ts redux 模块，它是一个对象
-
+1. src目录下创建 libs 库，里面创建 redux 目录，创建index.ts的redux 模块
+2. 编写createStore，替换store.ts中的 lib地址。
+重点：ts
 
 
 ## src-0?-redux-toolkit

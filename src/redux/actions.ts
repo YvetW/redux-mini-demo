@@ -1,14 +1,16 @@
 import {INCREMENT, DECREMENT, ADD_MESSAGE} from './action-types.ts';
 
 // 定义 CountAction 的类型
-interface CountAction {
-    type: typeof INCREMENT | typeof DECREMENT;
+export interface CountAction {
+    // type: typeof INCREMENT | typeof DECREMENT;
+    type: string
     data: number;
 }
 
 // 定义 MessageAction 的类型
-interface MessageAction {
-    type: typeof ADD_MESSAGE;  // 只有 ADD_MESSAGE 类型
+export interface MessageAction {
+    // type: typeof ADD_MESSAGE;  // 只有 ADD_MESSAGE 类型
+    type: string
     data: string;  // data 是一个字符串
 }
 
