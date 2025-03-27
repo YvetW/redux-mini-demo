@@ -8,12 +8,10 @@
 注：多个版本，运行前请先修改src名称。
 
 ## 项目介绍
-
 本项目是一个 redux 迷你实现，旨在帮助学习 redux 的状态管理机制，包括 `store`、`action`、`reducer`、`dispatch` 等核心概念。
 
 
 ## src-01-basic
-
 使用 react 函数组件和 ts，不使用redux实现基本功能
 
 
@@ -50,32 +48,25 @@
 
 
 ## src-03-redux-mini-lib
-
 ### 自定义 redux 库
 自己定义一个简易的 redux 库
 1. src目录下创建 libs 库，里面创建 redux 目录，创建index.ts的redux 模块，定义编写createStore 和combineReducers
 2. 替换 store.ts 和 reducers 中的引用地址。
 
+
 ## context-test
 理解context的用法
 
-## src-04-react-redux
 
-`react-redux` 模块包含2个重要属性：Provider 和 connect
-1. `Provider`
+## src-04-react-redux
+`Provider`
    - 值：组件类
    - 作用：向素有容器子组件提供全局store对象
    - 使用：`<Provider store={store}><Xxx /></Provider>`
 
-2. `connect`
-   - 值：高阶函数
-   - 作用：包装组件生成容器组件，让被包装组件能与redux进行通信
-   - 使用：`connect(mapStateToProps, mapDispatchToProps)(Xxx)`
-
-## src-05-react-redux
-### 自定义 react-redux 库
+在旧版 react-redux 中，使用 `connect()` 高阶组件（HOC）将 Redux 状态和 dispatch 方法注入到组件中。
+新版 react-redux 提供了 `useSelector` 和 `useDispatch` Hook，使函数组件可以直接访问 Redux 状态和 dispatch 方法。
 
 
-## src-0?-redux-toolkit
-实现 redux
-使用 `Redux Toolkit`
+## src-05-redux-toolkit
+使用 `Redux Toolkit` + `react-redux`
