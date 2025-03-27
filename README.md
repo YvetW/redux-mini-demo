@@ -56,6 +56,9 @@
 1. src目录下创建 libs 库，里面创建 redux 目录，创建index.ts的redux 模块，定义编写createStore 和combineReducers
 2. 替换 store.ts 和 reducers 中的引用地址。
 
+## context-test
+理解context的用法
+
 ## src-04-react-redux
 
 `react-redux` 模块包含2个重要属性：Provider 和 connect
@@ -69,7 +72,9 @@
    - 作用：包装组件生成容器组件，让被包装组件能与redux进行通信
    - 使用：`connect(mapStateToProps, mapDispatchToProps)(Xxx)`
 
-## context-test
+## src-05-react-redux
+### 自定义 react-redux 库
+
 
 ## src-0?-redux-toolkit
 实现 redux
