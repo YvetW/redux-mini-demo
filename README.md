@@ -3,6 +3,7 @@
 一个简易版 redux 实现，帮助理解 redux 的核心原理。
 - react v19
 - redux v5
+- react-redux v9
 
 注：多个版本，运行前请先修改src名称。
 
@@ -52,10 +53,23 @@
 
 ### 自定义 redux 库
 自己定义一个简易的 redux 库
-1. src目录下创建 libs 库，里面创建 redux 目录，创建index.ts的redux 模块
-2. 编写createStore，替换store.ts中的 lib地址。
-重点：ts
+1. src目录下创建 libs 库，里面创建 redux 目录，创建index.ts的redux 模块，定义编写createStore 和combineReducers
+2. 替换 store.ts 和 reducers 中的引用地址。
 
+## src-04-react-redux
+
+`react-redux` 模块包含2个重要属性：Provider 和 connect
+1. `Provider`
+   - 值：组件类
+   - 作用：向素有容器子组件提供全局store对象
+   - 使用：`<Provider store={store}><Xxx /></Provider>`
+
+2. `connect`
+   - 值：高阶函数
+   - 作用：包装组件生成容器组件，让被包装组件能与redux进行通信
+   - 使用：`connect(mapStateToProps, mapDispatchToProps)(Xxx)`
+
+## context-test
 
 ## src-0?-redux-toolkit
 实现 redux
