@@ -70,3 +70,9 @@
 
 ## src-05-redux-toolkit
 使用 `Redux Toolkit` + `react-redux`
+
+1. **用 `configureStore` 代替 `createStore`，自动组合 reducers**。
+2. **用 `createSlice` 代替 `reducers.ts`，不需要 `switch-case`**。
+3. **不需要手写 `actions.ts`，直接用 `slice.actions`**。
+4. **异步逻辑用 `createAsyncThunk`** 代替 `redux-thunk`。
+5. **自动启用 Redux DevTools 和 `immer`，代码更简洁**。

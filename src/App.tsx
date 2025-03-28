@@ -1,5 +1,6 @@
 import {useState} from 'react';
-import { increment, decrement, add_message} from './redux/actions.ts';
+import {increment, decrement, incrementAsync} from './redux/slices/counterSlice.ts';
+import {add_message} from './redux/slices/messagesSlice.ts';
 import {useSelector, useDispatch} from 'react-redux';
 import {AppDispatch, RootState} from './redux/store.ts';
 
@@ -8,10 +9,10 @@ function App() {
     const [message, setMessage] = useState<string>('');
 
     // 这里 useSelector 获取状态
-    const count = useSelector((state: RootState) => state.count);
-    const messages = useSelector((state: RootState) => state.messages);
-    
-    const dispatch = useDispatch<AppDispatch>();
+    const count = useSelector((state: RootState) => state.counter.value);
+    const messages = useSelector((state: RootState) => state.messages.value);
+
+    const dispatch = useDispatch<AppDispatch>(); // 需要类型标注
 
     function handleIncrement() {
         dispatch(increment(selectedValue));
@@ -30,9 +31,7 @@ function App() {
 
     // 异步增加
     function handleIncrementIfAsync() {
-        setTimeout(() => {
-            dispatch(increment(selectedValue));
-        }, 1000);
+        dispatch(incrementAsync(selectedValue));
     }
 
     function handleAdd() {
